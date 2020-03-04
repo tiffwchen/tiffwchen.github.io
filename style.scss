@@ -21,14 +21,15 @@ body {
 	background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
+  padding-bottom: 70px;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
-  width: 100%;
-}
+// .container {
+//   margin: 0 auto;
+//   max-width: 740px;
+//   padding: 0 10px;
+//   width: 100%;
+// }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
@@ -278,10 +279,10 @@ nav {
   background-color: $lightGray;
 }
 
-footer {
-  padding: 20px 0;
-  text-align: center;
-}
+// footer {
+//   padding: 20px 0;
+//   text-align: center;
+// }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
