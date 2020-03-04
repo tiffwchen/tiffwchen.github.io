@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Hello World
+title: WebJobs
 excerpt: Trying to change excerpt 
 ---
 
-This is my first post! 
