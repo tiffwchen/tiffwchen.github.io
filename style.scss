@@ -21,6 +21,7 @@ body {
 	background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
+  padding-bottom: 70px;
 }
 
 .container {
@@ -290,6 +291,8 @@ nav {
   height: 60px;
   line-height: 60px;
   background-color: #f5f5f5;
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .footer-container {
