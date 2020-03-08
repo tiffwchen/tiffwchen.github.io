@@ -182,7 +182,7 @@ img {
 .masthead {
   padding: 20px 0;
   border-bottom: 1px solid $lightGray;
-
+  min-width: 380px;
   @include mobile {
     text-align: center;
   }
@@ -268,7 +268,7 @@ nav {
 
 #main {
   @include mobile {
-    padding: 0 20px;
+    padding: 0 50px;
   }
 }
 
