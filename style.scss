@@ -39,7 +39,10 @@ body {
 
 .header-container {
   max-width: 100%;
-  padding: 0 50px;
+  padding: 0 200px;
+  @include mobile {
+    padding: 0 50px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
