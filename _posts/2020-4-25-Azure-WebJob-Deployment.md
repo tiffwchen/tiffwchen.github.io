@@ -38,7 +38,7 @@ Deploy an App Service resource within Azure. Whip up a default WebJob script and
 Create a new build pipeline. Within the build pipeline, add two tasks, “Copy files” and “Publish build artifacts”. For “Copy Files,” under the “Target Folder” input, input a path that begins with `“$(Build.ArtifactStagingDirectory)\MAIN_TARGET_FOLDER”`. For this example, I named my MAIN_TARGET_FOLDER, “web_job,” for simplicity. For continuous WebJobs – the rest of the file path should be `“app_data\jobs\continuous\JOB_NAME"` – and for triggered WebJobs the rest of the file path should be `“app_data\jobs\triggered\JOB_NAME”`. For this example, I am deploying a triggered WebJob name “testwebjob” so my full file path for the target folder is: “$(Build.ArtifactStagingDirectory)\web_job\app_data\jobs\triggered\testwebjob”
 
 ![Azure Build Pipeline - Copy Files Task](/images/azurewebjobdeployment/BuildPipelineCopyTask.png)
-<!-- .element height="50%" width="50%" -->
+<!-- .element height="200%" width="200%" -->
 
 For the “Publish build artifacts” task, all defaults can be left as is.
 
