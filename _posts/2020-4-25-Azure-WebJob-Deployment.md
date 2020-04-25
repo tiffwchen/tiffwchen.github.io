@@ -35,9 +35,10 @@ Deploy an App Service resource within Azure. Whip up a default WebJob script and
 
 #### Build Pipeline 
 
-Create a new build pipeline. Within the build pipeline, add two tasks, “Copy files” and “Publish build artifacts”. For “Copy Files,” under the “Target Folder” input, input a path that begins with “$(Build.ArtifactStagingDirectory)\MAIN_TARGET_FOLDER”. For this example, I named my MAIN_TARGET_FOLDER, “web_job,” for simplicity. For continuous WebJobs – the rest of the file path should be “app_data\jobs\continuous\JOB_NAME" – and for triggered WebJobs the rest of the file path should be “app_data\jobs\triggered\JOB_NAME”. For this example, I am deploying a triggered WebJob name “testwebjob” so my full file path for the target folder is: “$(Build.ArtifactStagingDirectory)\web_job\app_data\jobs\triggered\testwebjob”
+Create a new build pipeline. Within the build pipeline, add two tasks, “Copy files” and “Publish build artifacts”. For “Copy Files,” under the “Target Folder” input, input a path that begins with `“$(Build.ArtifactStagingDirectory)\MAIN_TARGET_FOLDER”`. For this example, I named my MAIN_TARGET_FOLDER, “web_job,” for simplicity. For continuous WebJobs – the rest of the file path should be `“app_data\jobs\continuous\JOB_NAME"` – and for triggered WebJobs the rest of the file path should be `“app_data\jobs\triggered\JOB_NAME”`. For this example, I am deploying a triggered WebJob name “testwebjob” so my full file path for the target folder is: “$(Build.ArtifactStagingDirectory)\web_job\app_data\jobs\triggered\testwebjob”
 
 ![Azure Build Pipeline - Copy Files Task](/images/azurewebjobdeployment/BuildPipelineCopyTask.png)
+<!-- .element height="50%" width="50%" -->
 
 For the “Publish build artifacts” task, all defaults can be left as is.
 
@@ -47,7 +48,7 @@ Run your build pipeline, and make sure it succeeds before you move on to the rel
 
 #### Release Pipeline
 
-Create a new release pipeline. Within that release pipeline, add an “Azure App Service deploy” task. Fill in the “Azure subscription,” “App Service type,” and “App Service name” fields from the selections within the dropdown menus. For the “Package or folder” field, fill in the target folder file path you created in the Build pipeline up to the “app_data” directory (but don’t include it). For example, my target folder file path for where my webjob artifact was published was “$(Build.ArtifactStagingDirectory)\web_job\app_data\jobs\triggered\testwebjob”, so I would fill the “Package or folder” field with `“$(System.DefaultWorkingDirectory)/**/web_job.”` The `‘**’` in the file path is a recursive wildcard for matching the file path of the desired “web_job” directory no matter how deeply it’s nested.
+Create a new release pipeline. Within that release pipeline, add an “Azure App Service deploy” task. Fill in the “Azure subscription,” “App Service type,” and “App Service name” fields from the selections within the dropdown menus. For the “Package or folder” field, fill in the target folder file path you created in the Build pipeline up to the “app_data” directory (but don’t include it). For example, my target folder file path for where my webjob artifact was published was “$(Build.ArtifactStagingDirectory)\web_job\app_data\jobs\triggered\testwebjob”, so I would fill the “Package or folder” field with `“$(System.DefaultWorkingDirectory)/**/web_job”`. The `‘**’` in the file path is a recursive wildcard for matching the file path of the desired “web_job” directory no matter how deeply it’s nested.
 
 ![Azure Release Pipeline - Publish Build Artifacts](/images/azurewebjobdeployment/ReleasePipeline.png)
 
