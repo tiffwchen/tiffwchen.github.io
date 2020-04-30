@@ -4,9 +4,14 @@ title: About
 permalink: /about/
 ---
 
+### Work History
+Applied Information Sciences (2018 - present)
+Microstrategy (2016 - 2018)
+
 ### Education
 
-A place to include any other types of information that you'd like to include about yourself.
+Brandeis University - CS MA - 2016
+Wellesley College - Biological Sciences BA - 2013
 
 ### Contact me
 
