@@ -12,7 +12,3 @@ Microstrategy (2016 - 2018)
 
 Brandeis University - CS MA - 2016
 Wellesley College - Biological Sciences BA - 2013
-
-### Contact me
-
-[email@domain.com](mailto:tiffany.wenya.chen@gmail.com)
