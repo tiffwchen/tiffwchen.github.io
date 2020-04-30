@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Automating Azure WebJob Deployment
+title: Automating Azure WebJob Deployments
 excerpt: Deploy Azure WebJobs (Azure Portal and Azure DevOps)
 ---
 
