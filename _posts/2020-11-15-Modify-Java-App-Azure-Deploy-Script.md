@@ -1,14 +1,14 @@
 ---
 layout: post
 title: Modify Java Web App Azure Deployment with Post-Deployment Script
-excerpt: Rename and Set Application .war File as ROOT.war
+excerpt: Automate Renaming of Application .war File as ROOT.war
 ---
 
 ## _Modify Java Web App Azure Deployment with Post-Deployment Script_
 
-When deploying a Java web application to Apache TomCat within an Azure App Service on Azure, it looks for a **ROOT.war** file within the **tomcat_home/webapps/ROOT directory** on default. However, when you build your Java web application through an Azure DevOps build pipeline, the .war file produced will be called **<NameOfApplication>.war**. This means your application will be accessed through **<mysite>.com/<NameOfApplication>/<MyPage>** rather than **<mysite>.com/<MyPage>**. 
+When deploying a Java web application to Apache TomCat within an Azure App Service on Azure, it looks for a **ROOT.war** file within the **tomcat_home/webapps/ROOT directory** on default. However, when you build your Java web application through an Azure DevOps build pipeline, the .war file produced will be called **`<NameOfApplication>.war`**. This means your application will be accessed through **`<mysite>.com/<NameOfApplication>/<MyPage>`** rather than **`<mysite>.com/<MyPage>`**. 
 
-One solution for ensuring the desired deployment of your Java web application: remove the default **ROOT.war** and rename your **<NameOfApplication>.war** to **ROOT.war**. And of course, we want to automate that process as part of your release pipeline within Azure DevOps. 
+One solution for ensuring the desired deployment of your Java web application: remove the default **ROOT.war** and rename your **`<NameOfApplication>.war`** to **ROOT.war**. And of course, we want to automate that process as part of your release pipeline within Azure DevOps. 
 
 ### Required Resources
 
@@ -25,11 +25,11 @@ Within your release pipeline:
 
 1. Select your **Azure App Service Deploy** task
 
-![Azure Release Pipeline - Deploy Azure Web App Task](/images/javaapppostdeployscript/DeployAzureWebAppTask.png)
+    ![Azure Release Pipeline - Deploy Azure Web App Task](/images/javaapppostdeployscript/DeployAzureWebAppTask.png)
 
 2. Select the **Post Deployment Action** section and choose **“Inline Script”** option from the **Deployment script type** dropdown
 
-![Deploy Azure Web App Task - Inline Script Option](/images/javaapppostdeployscript/PostDeploymentActionSection.png)
+    ![Deploy Azure Web App Task - Inline Script Option](/images/javaapppostdeployscript/PostDeploymentActionSection.png)
 
 3. Add the following script:
 
