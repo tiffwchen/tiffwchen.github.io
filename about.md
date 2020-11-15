@@ -7,7 +7,13 @@ permalink: /about/
 ### Work History
 Applied Information Sciences (2018 - present)
 
-Microstrategy (2016 - 2018)
+*Software Engineer*
+
+Microstrategy (2016 - 2018) 
+
+*Software Engineer*
+
+*Junior Software Engineer* 
 
 ### Education
 
