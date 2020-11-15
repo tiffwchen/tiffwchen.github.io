@@ -1,10 +1,8 @@
 ---
 layout: post
-title: Modify Java Web App Azure Deployment with Post-Deployment Script
+title: Modify Java Web App Azure Deployments with Post-Deployment Script
 excerpt: Automate Renaming of Application .war File as ROOT.war
 ---
-
-## _Modify Java Web App Azure Deployment with Post-Deployment Script_
 
 When deploying a Java web application to Apache TomCat within an Azure App Service on Azure, it looks for a **ROOT.war** file within the **tomcat_home/webapps/ROOT directory** on default. However, when you build your Java web application through an Azure DevOps build pipeline, the .war file produced will be called **`<NameOfApplication>.war`**. This means your application will be accessed through **`<mysite>.com/<NameOfApplication>/<MyPage>`** rather than **`<mysite>.com/<MyPage>`**. 
 
