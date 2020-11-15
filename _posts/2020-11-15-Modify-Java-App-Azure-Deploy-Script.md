@@ -30,11 +30,10 @@ Within your release pipeline:
     ![Deploy Azure Web App Task - Inline Script Option](/images/javaapppostdeployscript/PostDeploymentActionSection.png)
 
 3. Add the following script:
-```
-cd webapps
-rmdir /Q /S ROOT
-rename <name of war> ROOT
-```
+
+    cd webapps
+    rmdir /Q /S ROOT
+    rename <name of war> ROOT
 
 ![Deploy Azure Web App Task - With Script](/images/javaapppostdeployscript/PostDeploymentActionWithScript.png)
 
