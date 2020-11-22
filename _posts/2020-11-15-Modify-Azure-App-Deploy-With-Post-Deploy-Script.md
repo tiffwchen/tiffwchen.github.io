@@ -41,7 +41,7 @@ Within your release pipeline:
 
 Save and run your release pipeline!
 
-Now, you should be able to access your application through **<mysite>.com/<MyPage>**.
+Now, you should be able to access your application through **`<mysite>.com/<MyPage>`**.
 
 ### Script File Method 
 
