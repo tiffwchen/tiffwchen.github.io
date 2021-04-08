@@ -151,6 +151,7 @@ In this task, we publish the WebJob application. We make sure to output the proj
             Contents: '**/*.job'
             TargetFolder: '$(Build.ArtifactStagingDirectory)/WebJob/App_Data/jobs/triggered/$(WebJobName)/'
 `
+
 If you are creating a triggered WebJob that you want to trigger on a schedule, include this task to copy the settings.job file to the directory of the WebJob so it will all be published together as a build artifact. Refer to my [first blogpost](https://www.tiffanychen.dev/Azure-WebJob-Deployments/) for how to create the settings.job file. If you are not creating a scheduled WebJob, do not include the task. 
 
 `
