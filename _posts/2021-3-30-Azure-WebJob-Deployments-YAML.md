@@ -35,7 +35,7 @@ Under “Where is your code?”, select the “Azure Repos Git (YAML)” option.
 
 Select your repository, and then on the “Configure your pipeline” window, select “ASP.NET”. This will produce a sample YAML pipeline that you will now modify. Copy the following code, making sure to replace the variables with the desired name of your WebJob and the name of your App Service. 
 
-`
+```
 trigger:
     - master
     
@@ -122,14 +122,14 @@ trigger:
                     appName: $(WebAppName)
                     package: '$(System.ArtifactsDirectory)/Build.Build/$(WebJobName).zip'
                     deploymentMethod: 'zipDeploy'
-`
+```
 
 Now, let’s walk through each task of the YAML pipeline.
 First, we will cover the tasks that comprise the build portion of the pipeline. 
 
 First, we will cover the tasks that comprise the build portion of the pipeline. 
 
-`
+```
         - task: DotNetCoreCLI@2
           displayName: Publish Project As WebJob
           inputs:
@@ -139,22 +139,22 @@ First, we will cover the tasks that comprise the build portion of the pipeline.
             arguments: '--output $(Build.ArtifactStagingDirectory)/WebJob/App_Data/jobs/triggered/$(WebJobName)'
             zipAfterPublish: false
             modifyOutputPath: false
-`
+```
 
 In this task, we publish the WebJob application. We make sure to output the project using the specified file path because it’s required for the Azure App Service to recognize that it’s a WebJob during deployment. `“app_data\jobs\triggered\<WebJobName>”` for a triggered WebJob and `“app_data\jobs\continuous\<WebJobName>”` for a continuous WebJob. Make sure to specify that the modifyOutputPath is set to false, because otherwise, the project will be published to a directory named “/s” appended to your specified output file path, which will cause your WebJob deployment to fail. 
 
-`
+```
         # only for a scheduled triggered WebJob 
         - task: CopyFiles@2
           displayName: Create Schedule For WebJob
           inputs:
             Contents: '**/*.job'
             TargetFolder: '$(Build.ArtifactStagingDirectory)/WebJob/App_Data/jobs/triggered/$(WebJobName)/'
-`
+```
 
 If you are creating a triggered WebJob that you want to trigger on a schedule, include this task to copy the settings.job file to the directory of the WebJob so it will all be published together as a build artifact. Refer to my [first blogpost](https://www.tiffanychen.dev/Azure-WebJob-Deployments/) for how to create the settings.job file. If you are not creating a scheduled WebJob, do not include the task. 
 
-`
+```
 - task: PowerShell@2
   displayName: Generate run.cmd For WebJob
   inputs:
@@ -162,11 +162,11 @@ If you are creating a triggered WebJob that you want to trigger on a schedule, i
     script: '"dotnet $(WebJobName).dll" | Out-File run.cmd -Encoding ASCII; $LASTEXITCODE'
     pwsh: true
     workingDirectory: '$(Build.ArtifactStagingDirectory)/WebJob/App_Data/jobs/triggered/$(WebJobName)'
-`
+```
 
 Create a run.cmd for your console application WebJob by including this PowerShell Task. This is required for your console application to run. 
 
-`
+```
 - task: ArchiveFiles@2
   displayName: Zip Desired Files
   inputs:
@@ -175,31 +175,31 @@ Create a run.cmd for your console application WebJob by including this PowerShel
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(WebJobName).zip'
     replaceExistingArchive: true
-`
+```
 
 With this task, we are explicitly zipping up our WebJob with the appropriate file path for publishing. 
 
-`
+```
 - task: PublishPipelineArtifact@1
   displayName: Publish All Artifacts
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)'
     publishLocation: 'pipeline'
-`
+```
 
 Then, we publish our zip file to the pipeline so the release tasks in the pipeline can access the resulting build artifact. 
 
 Now, we move onto the tasks of the release portion of the pipeline. 
 
-`
+```
 - task: DownloadPipelineArtifact@2
   displayName: 'Download Build Artifact'
   inputs:
     path: '$(System.ArtifactsDirectory)'
-`
+```
 First, we download the build artifact to $(System.ArtifactsDirectory).
 
-`
+```
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '<YOURAZURESUBSCRIPTION>'
@@ -207,7 +207,7 @@ First, we download the build artifact to $(System.ArtifactsDirectory).
     appName: $(WebAppName)
     package: '$(System.ArtifactsDirectory)/Build.Build/$(WebJobName).zip'
     deploymentMethod: 'zipDeploy'
-`
+```
 
 Then, we use ‘zipDeploy’ option for the deploymentMethod parameter to deploy the WebJob to our App Service. Make sure you fill in your Azure Subscription for the task’s azureSubscription parameter. The easiest way to figure out what you should fill in for that property is to select the “Azure App Service deploy” task in the tasks sidebar of the edit pipelines view within Azure DevOps. Then, within the dropdown under Azure Subscription, select your subscription and copy the text exactly. 
 
