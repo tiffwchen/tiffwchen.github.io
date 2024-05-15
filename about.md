@@ -5,7 +5,16 @@ permalink: /about/
 ---
 
 ### Work History
-Applied Information Sciences (2018 - present)
+
+Human Capital Management Institute (2023-present)
+
+*Senior Software Engineer*
+
+Blueprint (2021-2023)
+
+*Senior Software Engineer*
+
+Applied Information Sciences (2018 - 2021)
 
 *Software Engineer*
 
