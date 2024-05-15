@@ -54,5 +54,3 @@ git remote -v
 
 Sources:
 * [How do you work with someone else's fork?](https://dev.to/davidmaceachern/how-do-you-work-with-someone-else-s-fork-5fd7#:~:text=How%20do%20you%20work%20with%20someone%20else%27s%20fork%3F,Make%20some%20changes%20then%20push%20to%20Github%20)
-
-<iframe title="[@10]|Productivity Benchmark_Showcase" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=f7e3b880-f310-47b7-bdf8-fbdfbd217e28&autoAuth=true&ctid=c9e8e6f7-ce8b-49ae-9eb4-d91e77472c23" frameborder="0" allowFullScreen="true"></iframe>
